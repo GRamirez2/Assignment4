@@ -1,0 +1,106 @@
+html{
+	height:100%;
+	box-sizing:border-box;
+}
+
+
+body{
+
+	height:100%;
+}
+#background{
+
+	
+	height: 100%;
+	background-image: url(../images/background.png);
+	background-repeat: no-repeat;
+}
+
+#title{
+
+	font-size: 300%;
+	font-weight: bold;
+	font-style: italic;
+
+}
+
+hr.style-one {
+	border: 0;
+	height: 2px;
+	background: #222;
+}
+
+
+#mainContainer{
+
+	width: 960px;
+	margin: 0px auto;
+	padding-top: 40px;
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+
+
+}
+
+#section1{
+	display: flex;
+  	align-items: center;
+  	justify-content: center
+}
+
+
+#subSection{
+	display: inline-block;
+}
+
+#section2{
+	background-color: yellow;
+	display: flex;
+  	align-items: center;
+  	justify-content: center
+}
+
+#section3{
+	background-color: coral;
+	display: flex;
+  	align-items: center;
+  	justify-content: center
+}
+
+#player1,
+#player2,
+#player3,
+#player4{
+	
+	/*border-style: solid;*/
+	/*border-color: black;*/
+	/*border-width: .2px;*/
+	float:left;
+	margin:10px;
+	padding-top: 10px;
+	font-weight: bold;
+	color: black;
+}
+
+.playerHealth{
+
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color:  #f2f2f2;
+	opacity: 0.6;
+	border-radius: 10px;
+}
+
+.textonscreen{
+
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+
+
+
+
+
+/*where does this go, it's fucking things up>----box-sizing:border-box;*/
+
