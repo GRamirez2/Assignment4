@@ -45,7 +45,7 @@ hr.style-one {
 #section1{
 	display: flex;
   	align-items: center;
-  	justify-content: center
+  	justify-content: center;
 }
 
 
@@ -54,14 +54,14 @@ hr.style-one {
 }
 
 #section2{
-	background-color: yellow;
+	/*background-color: yellow;*/
 	display: flex;
   	align-items: center;
   	justify-content: center
 }
 
 #section3{
-	background-color: coral;
+	/*background-color: coral;*/
 	display: flex;
   	align-items: center;
   	justify-content: center
@@ -80,6 +80,7 @@ hr.style-one {
 	padding-top: 10px;
 	font-weight: bold;
 	color: black;
+
 }
 
 .playerHealth{
@@ -89,12 +90,41 @@ hr.style-one {
 	background-color:  #f2f2f2;
 	opacity: 0.6;
 	border-radius: 10px;
+	border-style: solid;
+	border-color: black;
+	border-width: .2px;
+
 }
 
 .textonscreen{
 
 	padding-top: 10px;
 	padding-bottom: 10px;
+}
+
+.playerimg{
+	/*border-radius: 0px 0px 10px 10px;*/
+
+}
+
+#fightButton{
+
+	padding: 10px;
+	/*padding-bottom: 10px;*/
+	background-color:  #ff3333;
+	opacity: 0.8;
+	border-radius: 10px;
+	border-style: solid;
+	border-color: white;
+	border-width: 2px;
+	font-weight: bold;
+	width: 200px;
+	color: white;
+	font-size: 125%;
+	margin-top: 10px;
+
+
+
 }
 
 
