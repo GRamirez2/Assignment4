@@ -37,6 +37,13 @@ $("#guyHealth").text($("#guyHealth").data("life").health);
 $("#altonHealth").data("life", {health: 100, strikeForce: 75});
 $("#altonHealth").text($("#altonHealth").data("life").health);
 
+$("#fightButton").hide();
+$("#textOnScreen2").hide();
+$("#textOnScreen3").hide();
+$("#textOnScreen4").hide();
+
+var counter = 0;
+
 
 // write fuction that has a counter, when the fighters are selected they
 // need to pass info to a new id, if a value, could be their health value, 
@@ -49,14 +56,31 @@ $("#altonHealth").text($("#altonHealth").data("life").health);
 
 // move Bobby to fight area
 $("#player1").on("click", function(){
+
+	$("#textOnScreen1").hide();/*controling the message on screen*/
 	$("#player1").appendTo("#section2");
 	$("#subSection").appendTo("#section3");
+	
+// insert playerTwoSelect funtion that will turn the second selector off and on
+	$("#player1").attr("id", "#fighter1");
+	$("#fighter1").html("#section2");
+	console.log($("#bobbyHealth").data("life").strikeForce);	/*This works fine*/
+	console.log($("#fighter1").data("life").strikeForce); /*This isn't working*/
+	$("#textOnScreen2").show();
+	counter ++
+	console.log("counter number is "+counter)
+	
 });
+
+
 
  // move Giada to fight area
 $("#player2").on("click", function(){
 	$("#player2").appendTo("#section2");
 	$("#subSection").appendTo("#section3");
+	counter ++
+	console.log(counter)
+
 });
 
 // move Guy to fight area
