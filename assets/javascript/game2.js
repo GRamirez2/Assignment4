@@ -1,11 +1,51 @@
 $(document).ready(function(){
 
+// This idea didn't work, I trying data for each player
+// var players = {
+
+// 	player1: {health:150,strikeForce: 25},
+
+// 	player2: {health:125,strikeForce: 50},
+					
+// 	player3: {health:100,strikeForce: 15},
+// 			
+// 	player4: {health:175,strikeForce: 75},
+// 			
+// 	fighter1: {health:0,strikeForce: 0},
+
+// 	fighter2: {health:0,strikeForce: 0},
+
+// 	startGame:"",
+// 	nextPlayer:"",
+// 	battle:"",
+// 	win:"",
+// 	lose:"",
+// 	battleZone:"t/f",
+// }
+
+// creating data values for each player, in array of life,health&strikeForce
+$("#bobbyHealth").data("life", {health: 150, strikeForce: 25});
+// console.log($("#bobbyHealth").data("life").strikeForce, $("#bobbyHealth").data("life").health);
+$("#bobbyHealth").text($("#bobbyHealth").data("life").health);
+
+$("#giadaHealth").data("life", {health: 125, strikeForce: 50});
+$("#giadaHealth").text($("#giadaHealth").data("life").health);
+
+$("#guyHealth").data("life", {health: 100, strikeForce: 15});
+$("#guyHealth").text($("#guyHealth").data("life").health);
+
+$("#altonHealth").data("life", {health: 100, strikeForce: 75});
+$("#altonHealth").text($("#altonHealth").data("life").health);
+
+
 // write fuction that has a counter, when the fighters are selected they
 // need to pass info to a new id, if a value, could be their health value, 
 // total is >100 than allow another player to be selected, if not no new player
 // can be selected.(another way is to make a fuction above this all these onclicks that
 // have a var count=0 and on each click count+=1, if (count==2) then no more clicks.
 // I could this for the begining and set the second action in the fighting fuction.
+
+
 
 // move Bobby to fight area
 $("#player1").on("click", function(){
@@ -29,6 +69,7 @@ $("#player3").on("click", function(){
 $("#player4").on("click", function(){
 	$("#player4").appendTo("#section2");
 	$("#subSection").appendTo("#section3");
+	
 });
 
 
@@ -37,10 +78,11 @@ $("#player4").on("click", function(){
 
 // I might be able to give a condition on the new IDs that will disable the click.
 
-$("#fightButton").on("click", function(){
-	$("#newID")does something, and other $("newID") does something
-});
+// $("#fightButton").on("click", function(){
+// 	$("#newID")does something, and other $("newID") does something
+// });
 
+// Begining of BATTLE FUNCTION
 
 
 
