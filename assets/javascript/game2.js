@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 // creating data values for each player, for health & strikeForce and printing
 
-$("#player1").data("health",150).data("strikeForce", 25);
+$("#player1").data("health",180).data("strikeForce", 25);
 $("#bobbyHealth").text($("#player1").data("health"));
 
 $("#player2").data("health", 125).data("strikeForce", 50);
@@ -11,7 +11,7 @@ $("#giadaHealth").text($("#player2").data("health"));
 $("#player3").data("health", 100).data("strikeForce", 15);
 $("#guyHealth").text($("#player3").data("health"));
 
-$("#player4").data("health", 100).data("strikeForce", 75);
+$("#player4").data("health", 105).data("strikeForce", 65);
 $("#altonHealth").text($("#player4").data("health"));
 
 $("#textOnScreen1").show();
@@ -84,24 +84,47 @@ $("#player4").on("click", function(){
 
 // BEGINING of Battle Button Fuction,counter++
 $("#fightButton").on("click", function(){
-	console.log($("article section:first").data("strikeForce"));
-	console.log($("article section:first").data("health"));
-	console.log($("article section:last").data("strikeForce"));
-	console.log($("article section:last").data("health"));
-
-	($("article section:last").data("health"))-($("article section:first").data("strikeForce"))
-	$("article section:last").text($("article section:last").data("health"));
 
 
+var fighter1Strike = $("article section:first").data("strikeForce");
+var fighter1Health = $("article section:first").data("health");
+var fighter2Strike = $("article section:last").data("strikeForce");
+var fighter2Health = $("article section:last").data("health");
 
-	});
+var fighter1HealthWeaker = fighter1Health - fighter2Strike;
+var fighter2HealthWeaker = fighter2Health - fighter1Strike;
 
+
+console.log(fighter1Strike,fighter1Health,fighter2Strike,fighter2Health)
+// console.log(fighter1StrikeStronger)
+// console.log(fighter1HealthWeaker)
+// console.log(fighter2HealthWeaker)
+
+$("article section:first").data('health', fighter1HealthWeaker);
+$("article section:first").attr('data-health', fighter1HealthWeaker);
+
+$("article section:last").data('health', fighter2HealthWeaker);
+$("article section:last").attr('data-health', fighter2HealthWeaker);
+
+console.log($("article section:first").data("health"));
+console.log($("article section:last").data("health"));
+
+$("#textOnScreen3").show();
+$("#textOnScreen3").html("YOU DEPLETED YOUR OPPONENTS HEALTH BY "+fighter1Strike+"<br>YOUR OPPONENT DEPLETED YOUR HEALTH BY "+fighter2Strike);
+
+$("article aside:first").text(fighter1HealthWeaker);
+$("article aside:last").text(fighter2HealthWeaker);
+
+	});/*End of Battle Button Fuction*/
+
+// For if/else statement to add to the strike power of fighter1
+// var fighter1StrikeStronger = fighter1Strike +25
+// $("article section:first").data('strikeForce', fighter1HealthWeaker);
+// $("article section:first").attr('data-strikeForce', fighter1HealthWeaker);
 
 
 // run the math on the battle numbers from elements in parent div, if dead or win flip counter
 
-// 	($("#section2":last-child).data("health")) - ($("#section2":first-child).data("strikeForce"));
-// 	($("#section2":first-child).data("health")); - ($("#section2":last-child).data("strikeForce"));
 // 	html data health and strike force for each to textOnScreen4
 
 // 	if last child health is <= 0 add to first child strikeforce and open counter, if first child is <=0, loose game.
@@ -110,14 +133,6 @@ $("#fightButton").on("click", function(){
 // 	create  "you lost, want to play again" button to restart the game. 
 // 
 
-
-
-// console.log($("#player1").data("health"));
-// console.log($("#section2":first-child).data("health"));
-
-// If I can't get to the data I'll need to write it to a variable and loop through it for a match.
-// var player1H=($("#player1").data("health"));
-// console.log(player1H + "option b for battle function is to call a variable that has been assigned the number I need");
 
 	
 
