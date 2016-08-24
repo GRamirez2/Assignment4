@@ -2,16 +2,16 @@ $(document).ready(function(){
 
 // creating data values for each player, for health & strikeForce and printing
 
-$("#player1").data("health",180).data("strikeForce", 25);
+$("#player1").data("health",180).data("strikeForce", 23);
 $("#bobbyHealth").text($("#player1").data("health"));
 
-$("#player2").data("health", 125).data("strikeForce", 50);
+$("#player2").data("health", 125).data("strikeForce", 20);
 $("#giadaHealth").text($("#player2").data("health"));
 
-$("#player3").data("health", 100).data("strikeForce", 15);
+$("#player3").data("health", 100).data("strikeForce", 11);
 $("#guyHealth").text($("#player3").data("health"));
 
-$("#player4").data("health", 105).data("strikeForce", 65);
+$("#player4").data("health", 105).data("strikeForce", 25);
 $("#altonHealth").text($("#player4").data("health"));
 
 $("#textOnScreen1").show();
@@ -115,12 +115,40 @@ $("#textOnScreen3").html("YOU DEPLETED YOUR OPPONENTS HEALTH BY "+fighter1Strike
 $("article aside:first").text(fighter1HealthWeaker);
 $("article aside:last").text(fighter2HealthWeaker);
 
+if($("article section:first").data('health') <=0 ){
+	$("#fightButton").html("YOU LOST!<br>PLAY AGAIN?");
+	$("#section2").fadeOut( "fast" );
+	$("#textOnScreen3").hide();
+	$("article section:last, article sections:first").remove();
+	// a function that starts the game over on click. 	
+		}
+
+if(fighter2Health <= 0){
+			;win--;
+			$("article section:last").remove();
+			counter --
+	if ( counter ==2){
+		$("#fightButton").show();$("#section3").hide();$("#textOnScreen2").hide();
+	}else{$("#textOnScreen2").show();$("#fightButton").hide();$("#section3").show();$("#textOnScreen3").hide();
+	var fighter1StrikeStronger = fighter1Strike +25
+	$("article section:first").data('strikeForce', fighter1HealthWeaker);
+	$("article section:first").attr('data-strikeForce', fighter1HealthWeaker);
+		};
+
+
+
+			console.log(counter+"==2")
+		}
+if (win == 0){
+	$("#fightButton").html("YOU WON!<br>PLAY AGAIN?");
+	$("#section2").fadeOut( "fast" );
+	$("#textOnScreen3").hide();
+	$("article section:last, article sections:first").remove();
+}
+
 	});/*End of Battle Button Fuction*/
 
-// For if/else statement to add to the strike power of fighter1
-// var fighter1StrikeStronger = fighter1Strike +25
-// $("article section:first").data('strikeForce', fighter1HealthWeaker);
-// $("article section:first").attr('data-strikeForce', fighter1HealthWeaker);
+
 
 
 // run the math on the battle numbers from elements in parent div, if dead or win flip counter
