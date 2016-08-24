@@ -23,7 +23,8 @@ $(document).ready(function(){
 // 	battleZone:"t/f",
 // }
 
-// creating data values for each player, for health & strikeForce
+// creating data values for each player, for health & strikeForce and printing
+// the health to the screen
 $("#player1").data("health",150). data("strikeForce", 25);
 $("#bobbyHealth").text($("#player1").data("health"));
 
@@ -52,7 +53,7 @@ $("#player1").on("click", function(){
 	$("#player1").appendTo("#section2");
 	$("#subSection").appendTo("#section3");
 	
-// insert playerTwoSelect funtion that will turn the second selector off and on
+
 	counter ++
 	if ( counter ==2){
 		$("#fightButton").show();$("#section3").hide();$("#textOnScreen2").hide();
@@ -74,7 +75,10 @@ $("#player2").on("click", function(){
 		$("#fightButton").show();$("#section3").hide();$("#textOnScreen2").hide();
 	}else{$("#section2").show();$("#fightButton").hide();$("#textOnScreen2").show();
 		};
-	// console.log(counter)/*Why can't this see the counter?*/
+
+	console.log($("#section2:first-child").data("strikeForce"));
+	console.log($("#section2:last-child").data("health"));
+	console.log($("#player2").data("health"));
 
 });
 
@@ -100,6 +104,7 @@ $("#player4").on("click", function(){
 		};
 	
 });
+// BATTLE Button FUNCTION
 // run the math on the battle numbers from elements in parent div, if dead or win flip counter
 // $("#fightButton").on("click", function(){
 // 	($("#section2":last-child).data("health")) - ($("#section2":first-child).data("strikeForce"));
@@ -109,26 +114,17 @@ $("#player4").on("click", function(){
 // 	if last child health is <= 0 add to first child strikeforce and open counter, if first child is <=0, loose game.
 // 	Toogle on #textOnScreen4 until win or loose. 
 	
-// 	create huge "you lost, want to play again" button to restart the game. 
+// 	create  "you lost, want to play again" button to restart the game. 
 // };
 
 
 
+// console.log($("#player1").data("health"));
+// console.log($("#section2":first-child).data("health"));
 
-
-// Need to add more events to the move fuction, adding data (maybe)
-// and assigning the fighters new IDs.
-
-// I might be able to give a condition on the new IDs that will disable the click.
-
-// $("#fightButton").on("click", function(){
-// 	$("#newID")does something, and other $("newID") does something
-// });
-
-// Begining of BATTLE FUNCTION
-
-var player1H=($("#player1").data("health"));
-console.log(player1H + "plan b");
+// If I can't get to the data I'll need to write it to a variable and loop through it for a match.
+// var player1H=($("#player1").data("health"));
+// console.log(player1H + "option b for battle function is to call a variable that has been assigned the number I need");
 
 
 
