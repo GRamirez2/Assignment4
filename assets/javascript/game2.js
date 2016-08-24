@@ -24,9 +24,9 @@ $(document).ready(function(){
 // }
 
 // creating data values for each player, in array of life,health&strikeForce
-$("#bobbyHealth").data("life", {health: 150, strikeForce: 25});
+$("#player1").data("life", {health: 150, strikeForce: 25});
 // console.log($("#bobbyHealth").data("life").strikeForce, $("#bobbyHealth").data("life").health);
-$("#bobbyHealth").text($("#bobbyHealth").data("life").health);
+$("#bobbyHealth").text($("#player1").data("life").health);
 
 $("#giadaHealth").data("life", {health: 125, strikeForce: 50});
 $("#giadaHealth").text($("#giadaHealth").data("life").health);
@@ -63,12 +63,12 @@ $("#player1").on("click", function(){
 	
 // insert playerTwoSelect funtion that will turn the second selector off and on
 	$("#player1").attr("id", "#fighter1");
-	$("#fighter1").html("#section2");
-	console.log($("#bobbyHealth").data("life").strikeForce);	/*This works fine*/
-	console.log($("#fighter1").data("life").strikeForce); /*This isn't working*/
-	$("#textOnScreen2").show();
-	counter ++
-	console.log("counter number is "+counter)
+	// $("#section2").html("#fighter1");/*switched? */
+	console.log($("#bobbyHealth").data("life"));	/*This works fine*/
+	// console.log($("#fighter1").data("life").strikeForce); /*This isn't working*/
+	
+	// counter ++
+	// console.log("counter number is "+counter)
 	
 });
 
@@ -79,7 +79,7 @@ $("#player2").on("click", function(){
 	$("#player2").appendTo("#section2");
 	$("#subSection").appendTo("#section3");
 	counter ++
-	console.log(counter)
+	// console.log(counter)/*Why can't this see the counter?*/
 
 });
 
