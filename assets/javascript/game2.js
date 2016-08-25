@@ -19,7 +19,8 @@ $("#textOnScreen2").hide();
 $("#textOnScreen3").hide();
 $("#textOnScreen4").hide();
 $("#fightButton").hide();
-
+$("#textOnScreen4").hide();
+$("#textOnScreen5").hide();
 var counter = 0;
 var win = 3;
 
@@ -30,6 +31,7 @@ $("#player1").on("click", function(){
 	$("#player1").appendTo("#section2");
 	$("#subSection").appendTo("#section3");
 	$("#textOnScreen1").hide();
+	$("#player1").off();
 	counter ++
 	if ( counter ==2){
 		$("#fightButton").show();$("#section3").hide();$("#textOnScreen2").hide();
@@ -46,6 +48,7 @@ $("#player2").on("click", function(){
 	$("#player2").appendTo("#section2");
 	$("#subSection").appendTo("#section3");
 	$("#textOnScreen1").hide();
+	$("#player2").off();
 	counter ++
 	if ( counter ==2){
 			$("#fightButton").show();$("#section3").hide();$("#textOnScreen2").hide();
@@ -60,6 +63,7 @@ $("#player3").on("click", function(){
 	$("#player3").appendTo("#section2");
 	$("#subSection").appendTo("#section3");
 	$("#textOnScreen1").hide();
+	$("#player3").off();
 	counter ++
 	if ( counter ==2){
 		$("#fightButton").show();$("#section3").hide();$("#textOnScreen2").hide();
@@ -73,6 +77,7 @@ $("#player4").on("click", function(){
 	$("#player4").appendTo("#section2");
 	$("#subSection").appendTo("#section3");
 	$("#textOnScreen1").hide();
+	$("#player4").off();
 	counter ++
 	if ( counter ==2){
 			$("#fightButton").show();$("#section3").hide();$("#textOnScreen2").hide();
@@ -80,7 +85,8 @@ $("#player4").on("click", function(){
 		};
 	
 });/*END of Alton onClick*/
-
+// is this where the end game function lives? and the start is at the very top, that also has
+// a clear section2, 3 and one text area?
 
 // BEGINING of Battle Button Fuction,counter++
 $("#fightButton").on("click", function(){
@@ -96,9 +102,6 @@ var fighter2HealthWeaker = fighter2Health - fighter1Strike;
 
 
 console.log(fighter1Strike,fighter1Health,fighter2Strike,fighter2Health)
-// console.log(fighter1StrikeStronger)
-// console.log(fighter1HealthWeaker)
-// console.log(fighter2HealthWeaker)
 
 $("article section:first").data('health', fighter1HealthWeaker);
 $("article section:first").attr('data-health', fighter1HealthWeaker);
@@ -115,48 +118,77 @@ $("#textOnScreen3").html("YOU DEPLETED YOUR OPPONENTS HEALTH BY "+fighter1Strike
 $("article aside:first").text(fighter1HealthWeaker);
 $("article aside:last").text(fighter2HealthWeaker);
 
-if($("article section:first").data('health') <=0 ){
-	$("#fightButton").html("YOU LOST!<br>PLAY AGAIN?");
-	$("#section2").fadeOut( "fast" );
-	$("#textOnScreen3").hide();
-	$("article section:last, article sections:first").remove();
-	// a function that starts the game over on click. 	
-		}
+loose();
+wingame();
+nextPlayer();
 
-if(fighter2Health <= 0){
-			;win--;
-			$("article section:last").remove();
-			counter --
-	if ( counter ==2){
-		$("#fightButton").show();$("#section3").hide();$("#textOnScreen2").hide();
-	}else{$("#textOnScreen2").show();$("#fightButton").hide();$("#section3").show();$("#textOnScreen3").hide();
-	var fighter1StrikeStronger = fighter1Strike +25
-	$("article section:first").data('strikeForce', fighter1HealthWeaker);
-	$("article section:first").attr('data-strikeForce', fighter1HealthWeaker);
-		};
+});/*End of Battle Button Fuction*/
 
+function loose(){
 
+	if(($("article section:first").data('health')) <=0 ){
+		$("#section2").remove();
+		$("#textOnScreen3").hide();
+		$("#textOnScreen2").hide();
+		$("#textOnScreen4").show();/*NOT WORKING, need to link this to start game over*/
+		$("#fightButton").hide();/*NOT WORKING?*/
+		$("article section:last, article sections:first").remove();
+		$("#section3").remove();
+		// a function that starts the game over on button click, empties, section 2 and 3, plus the one text bar with health numbers. 	
+			}
+  }/*END of loose function*/
 
+function nextPlayer(){
+	// Beat Fighter 2, choose new player or win game if beat 3 players
+	if(($("article section:last").data('health')) <= 0){
+				win--;
+				$("article section:last").remove();
+				counter --
+		if ( counter ==2){
+			$("#fightButton").show();$("#section3").hide();$("#textOnScreen2").hide();
+		}else{$("#textOnScreen2").show();$("#fightButton").hide();$("#section3").show();$("#textOnScreen3").hide();
+			var fighter1Strike = $("article section:first").data("strikeForce");
+			var fighter2Strike = $("article section:last").data("strikeForce");
+			var fighter1StrikeStronger = fighter1Strike +25
+		// need to get the math to work with the new strikeforce, and push the number to the health, make function for the button second use. 
+		$("article section:first").data('strikeForce', fighter1StrikeStronger);
+		$("article section:first").attr('data-strikeForce', fighter1StrikeStronger);
+		$("#textOnScreen3").html("YOU DEPLETED YOUR OPPONENTS HEALTH BY "+fighter1StrikeStronger+"<br>YOUR OPPONENT DEPLETED YOUR HEALTH BY "+fighter2Strike);
+			};
 			console.log(counter+"==2")
-		}
-if (win == 0){
-	$("#fightButton").html("YOU WON!<br>PLAY AGAIN?");
+			console.log($("article section:last").data('health')+" fighter2 healthe number");
+			}
+
+	wingame();
+	loose();
+  };/*END OF NEXTPLAYER FUNCTION*/	
+
+
+function wingame (){
+
+//Player 1 wins game 
+	if (win == 0){
+	$("#textOnScreen5").Show();
 	$("#section2").fadeOut( "fast" );
 	$("#textOnScreen3").hide();
+	$("#fightButton").hide();
 	$("article section:last, article sections:first").remove();
-}
+	$("#textOnScreen3").clear();
+	// on click to start game over. empty secions and one text area
+	}
 
-	});/*End of Battle Button Fuction*/
+};/*END of WIN FUNCTION*/	
+
+
 
 
 
 
 // run the math on the battle numbers from elements in parent div, if dead or win flip counter
 
-// 	html data health and strike force for each to textOnScreen4
+// 	new strike force number on screen
 
-// 	if last child health is <= 0 add to first child strikeforce and open counter, if first child is <=0, loose game.
-// 	Toogle on #textOnScreen4 until win or loose. 
+
 	
 // 	create  "you lost, want to play again" button to restart the game. 
 // 
