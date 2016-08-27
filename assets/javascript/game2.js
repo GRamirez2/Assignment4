@@ -22,7 +22,7 @@ $(document).ready(function(){
 	$("#fightButton").hide();
 	$("#textOnScreen4").hide();
 	$("#textOnScreen5").hide();
-	// $("#textOnScreen4").on("click", loose());	
+
 	// the other button to restart game
 	var originalPlayerList = $("#section1").clone(true,true);
 	var counter = 0;
@@ -126,8 +126,9 @@ $(document).ready(function(){
 
 	});/*End of Battle Button Fuction*/
 
-	function loose(){
+	// $("#textOnScreen4").on("click", restartGame);
 
+	function loose(){
 		if(($("article section:first").data('health')) <=0 ){
 			// $("#section2").remove();
 			$("#textOnScreen3").hide();
@@ -135,20 +136,23 @@ $(document).ready(function(){
 			// $("#textOnScreen2").hide();
 			$("#textOnScreen4").show();/* start game over link*/
 			$("#fightButton").hide();
-			$("article section:last, article sections:first").detach();
-			$("article section:first, article sections:first").detach();
-			$("#section3").detach();
-			setTimeout(restartGame, 1000 * 3);
+			// $("article section:last, article section:first").detach();
+			// $("article section:first, article section:first").detach();
+			$("article section:last, article section:first").detach();
+			$("article section:first, article section:first").appendTo("#subSection");
 
-				}
-
-
-	  }/*END of loose function*/
+			
+			$("#section3").hide();
+			// setTimeout(restartGame, 1000 * 3);
+		}
+	}/*END of loose function*/
 
 	function nextPlayer(){
 		// Beat Fighter 2, choose new player or win game if beat 3 players
 		if(($("article section:last").data('health')) <= 0){
 			$("article section:last").remove();
+			// $("article section:last").hide();
+
 			win--;
 			counter --;/*not sure this is how I need this counter anymore?*/
 			}
@@ -166,8 +170,8 @@ $(document).ready(function(){
 			$("article section:first").data('strikeForce', fighter1StrikeStronger);
 			$("article section:first").attr('data-strikeForce', fighter1StrikeStronger);
 			$("#textOnScreen3").html("YOU DEPLETED YOUR OPPONENTS HEALTH BY "+fighter1StrikeStronger+"<br>YOUR OPPONENT DEPLETED YOUR HEALTH BY "+fighter2Strike);
-							
-			console.log(counter+"==2")
+			$("#section3").show();				
+			console.log(counter+"line 174")
 			console.log(fighter1Strike+"and"+fighter1StrikeStronger);
 			};
 				
@@ -182,10 +186,10 @@ $(document).ready(function(){
 		$("#section2").empty();
 		$("#textOnScreen3").hide();
 		$("#fightButton").hide();
-		$("article section:last, article sections:first").remove();
+		$("article section:last, article section:first").remove();
 		$("#textOnScreen3").empty();
 		$("#textOnScreen2").hide();
-		setTimeout(restartGame, 1000 * 3);
+		
 
 			}
 
@@ -195,7 +199,7 @@ $(document).ready(function(){
 	//This will also be linked to from the buttons on the win and loose screen.
 	function restartGame(){
 
-		$("#section1").replaceWith(originalPlayerList);
+		// $("#section1").replaceWith(originalPlayerList);
 
 				$("#player1").data("health",150).data("strikeForce", 30);
 				$("#bobbyHealth").text($("#player1").data("health"));
